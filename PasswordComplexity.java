@@ -4,23 +4,10 @@ public class PasswordComplexity {
 
     public static boolean isPasswordComplex(String password) {
 
-        if (password.length() < 6) {
-            return false;
-        }
-        boolean hasLowerCaseLatter = false;
-        boolean hasUpperCaseLatter = false;
-        boolean hasNumber = false;
-        for (int i = 0; i < password.length() || (!hasLowerCaseLatter && !hasUpperCaseLatter && !hasNumber); i++) {
-            char current = password.charAt(i);
-            if (Character.isDigit(current)){
-                hasNumber = true;
-            }else if (Character.isUpperCase(current)){
-                hasUpperCaseLatter = true;
-            }else if (Character.isLowerCase(current)){
-                hasLowerCaseLatter = true;
-            }
-
-        }return  hasNumber && hasLowerCaseLatter && hasUpperCaseLatter;
+       return password.length() >= 6 &&
+               password.matches(".*\\d.*") &&
+               password.matches(".*[a-z].*")&&
+               password.matches(".*[A-Z].*");
     }
 
     public static void main(String[] args) {
